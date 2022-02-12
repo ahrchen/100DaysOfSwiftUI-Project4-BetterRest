@@ -53,7 +53,12 @@ struct ContentView: View {
                     Text("Daily coffee intake")
                         .font(.headline)
                     
-                    Stepper(coffeeAmount == 1 ? "1 cup": "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
+                    Picker("Cups of coffee", selection: $coffeeAmount) {
+                        ForEach(1...20, id:\.self) { cups in
+                            Text(cups.formatted())
+                        }
+                    }
+                    .pickerStyle(.automatic)
                 }
                 
             }
